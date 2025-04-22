@@ -7,10 +7,10 @@ import ListProperty from "./components/Layout/ListProperty";
 function App() {
   return (
     <div className="App">
+      <Navbar />
       <Container>
-        <Navbar></Navbar>
-        <HeroBanner></HeroBanner>
-        <ListProperty></ListProperty>
+        <HeroBanner />
+        <ListProperty />
       </Container>
     </div>
   );

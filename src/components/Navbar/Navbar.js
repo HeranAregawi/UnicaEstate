@@ -1,76 +1,67 @@
-import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
-import React from "react";
+import MenuIcon from "@mui/icons-material/Menu";
+import {
+  AppBar,
+  Box,
+  Button,
+  IconButton,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import React, { useState } from "react";
+import "../Navbar/Navbar.css";
 
 function Navbar() {
+  const [menuAnchor, setMenuAnchor] = useState(null);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const handleMenuOpen = (event) => {
+    setMenuAnchor(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setMenuAnchor(null);
+  };
+
+  const menuItems = ["Buy", "Sell", "Rent"];
+
   return (
-    <AppBar position="static" elevation={0} sx={{ backgroundColor: "#fff" }}>
-      <Toolbar
-        disableGutters
-        sx={{
-          justifyContent: "space-between",
-          minHeight: 48,
-          height: 48,
-          px: 2,
-        }}
-      >
-        <Typography variant="body1" sx={{ fontWeight: "bold", color: "black" }}>
-          UnicaEstate
-        </Typography>
+    <AppBar className="AppBar">
+      <Toolbar className="ToolBar">
+        <Typography className="TitleTypography">UnicaEstate</Typography>
 
-        <Box sx={{ display: "flex", gap: "0" }}>
-          <Button
-            variant="text"
-            size="small"
-            sx={{
-              color: "black",
-              textTransform: "none",
-              padding: "1px 4px",
-              minWidth: "auto", // removes min-width restriction
-              fontSize: "0.6rem",
-            }}
-          >
-            Buy
-          </Button>
-          <Button
-            variant="text"
-            size="small"
-            sx={{
-              color: "black",
-              textTransform: "none",
-              minWidth: "auto",
-              padding: "1px 4px",
-              fontSize: "0.6rem",
-            }}
-          >
-            Sell
-          </Button>
-          <Button
-            variant="text"
-            size="small"
-            sx={{
-              color: "black",
-              textTransform: "none",
-              minWidth: "auto",
-              padding: "1px 4px",
-              fontSize: "0.6rem",
-            }}
-          >
-            Rent
-          </Button>
+        {isMobile ? (
+          <Box>
+            <Button className="SignInButton">Sign In</Button>
+            <IconButton className="MenuIconButton" onClick={handleMenuOpen}>
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              anchorEl={menuAnchor}
+              open={Boolean(menuAnchor)}
+              onClose={handleMenuClose}
+            >
+              {menuItems.map((item) => (
+                <MenuItem key={item} onClick={handleMenuClose}>
+                  {item}
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+        ) : (
+          <>
+            <Box className="AppBarBox">
+              <Button className="AppBarButtons">Buy</Button>
+              <Button className="AppBarButtons">Sell</Button>
+              <Button className="AppBarButtons">Rent</Button>
 
-          <Button
-            variant="text"
-            sx={{
-              color: "black",
-              fontSize: "0.6rem",
-              padding: "1px 4px",
-              textTransform: "none",
-              minWidth: "auto",
-            }}
-          >
-            Sign In
-          </Button>
-        </Box>
+              <Button className="AppBarButtons">Sign In</Button>
+            </Box>
+          </>
+        )}
       </Toolbar>
     </AppBar>
   );
