@@ -13,6 +13,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
+import "../Layout/ListProperty.css";
 
 import React, { useState } from "react";
 
@@ -59,8 +60,6 @@ const cards = [
 
 const ListProperty = () => {
   const [startIndex, setStartIndex] = useState(0);
-  // const [menuAnchor, setMenuAnchor] = useState(null);
-
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const maxCards = isMobile ? 1 : 3;
@@ -77,218 +76,66 @@ const ListProperty = () => {
   };
 
   const visibleCards = cards.slice(startIndex, startIndex + maxCards);
+  const cursorBackArrow = startIndex > 0 ? "cursor-pointer" : "cursor-disabled";
+  const cursorForwardArrow =
+    startIndex + maxCards >= cards.length
+      ? "cursor-disabled"
+      : "cursor-pointer";
 
   return (
     <>
-      <Box
-        sx={{
-          display: "flex",
-          // pl: 5,
-          // pt: 3,
-          // pb: 1,
-          // pl: { xs: 4, sm: 6, md: 0 }, // Apply different padding for mobile, tablet, and desktop
-          // pt: { xs: 1, sm: 2, md: 3 }, // Different top padding
-          // pb: { xs: 0.5, sm: 1, md: 2 },
-          alignItems: "flex-start",
-          flexDirection: "column",
-          gap: 0.3,
-          ml: 0,
-          pl: {
-            xs: 3,
-            sm: 4,
-            md: 5,
-          },
-        }}
-      >
-        <Typography
-          sx={{
-            fontWeight: "bold",
-            // fontSize: "1.5rem",
-            fontSize: {
-              xs: "0.8rem",
-              sm: "0.8rem",
-              md: "1.5rem",
-            },
-          }}
-        >
+      <Box className="BoxTypographyListProperty">
+        <Typography className="TypographyListRecommended">
           Recommended for you
         </Typography>
-        <Typography
-          sx={{
-            fontSize: {
-              xs: "0.5rem",
-              sm: "0.5rem",
-              md: "0.8rem",
-            },
-          }}
-        >
+        <Typography className="Typography">
           Trending Properties in Addis Ababa, Ethiopia
         </Typography>
       </Box>
-      <Box
-        sx={{
-          display: "flex",
-          // pl: 0,
-          // pt: 0,
-          // p: { xs: 0, sm: 3, md: 0 }, // Apply different padding for mobile, tablet, and desktop
-          pt: { xs: 1, sm: 1, md: 1 }, // Different top padding
-          overflowX: "auto",
-          // gap: 3,
-          gap: {
-            xs: 1,
-            sm: 1,
-            md: 3,
-          },
-          alignItems: "center",
-        }}
-      >
+      <Box className="BoxListProperty">
         <ArrowBackIosIcon
-          sx={{
-            fontSize: 15,
-            p: 0,
-            cursor: startIndex > 0 ? "pointer" : "default",
-            cursor: startIndex > 0 ? "text.primary" : "grey.400",
-          }}
+          className={cursorBackArrow}
           onClick={startIndex > 0 ? handlePrev : undefined}
         ></ArrowBackIosIcon>
         {visibleCards.map((card) => (
-          <Card
-            sx={{
-              // minWidth: 330,
-              minWidth: {
-                xs: 230,
-                sm: 230,
-                md: 330,
-              },
-              display: "flex",
-              flexDirection: "column",
-              height: {
-                xs: 250,
-                sm: 200,
-                md: 280,
-              },
-            }}
-          >
+          <Card className="CardListProperty">
             <CardMedia
+              className="cardMediaListProperty"
               component="img"
               alt="responsive"
               image={card.image}
-              sx={{
-                height: {
-                  xs: 160,
-                  sm: 100,
-                  md: 180,
-                },
-              }}
             />
-            <Box display="flex" justifyContent="space-between" sx={{ p: 0.2 }}>
-              <CardContent
-                sx={{
-                  padding: "1px 1px",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                }}
-              >
-                <Typography
-                  sx={{
-                    //  fontSize: "1.5rem",
-                    fontSize: {
-                      xs: "1.2rem",
-                      sm: "1rem",
-                      md: "1.5rem",
-                    },
-                    fontWeight: "bold",
-                  }}
-                >
+            <Box className="BoxCardContent">
+              <CardContent className="CardContent">
+                <Typography className="TypographyPrice">
                   {card.price}
                 </Typography>
-                <Typography
-                  sx={{
-                    // fontSize: "1rem"
-                    fontSize: {
-                      xs: "0.8rem",
-                      sm: "1rem",
-                      md: "1rem",
-                    },
-                  }}
-                >
+                <Typography className="TypographyInfo">
                   {card.content}
                 </Typography>
-                <Typography
-                  sx={{
-                    // fontSize: "0.8rem"
-                    fontSize: {
-                      xs: "0.6rem",
-                      sm: "1rem",
-                      md: "0.8rem",
-                    },
-                  }}
-                >
+                <Typography className="TypographyAddress">
                   {card.address}
                 </Typography>
-                <Typography
-                  sx={{
-                    // fontSize: "0.6rem"
-                    fontSize: {
-                      xs: "0.5rem",
-                      sm: "1rem",
-                      md: "0.6rem",
-                    },
-                  }}
-                >
+                <Typography className="TypographyListInfo">
                   Listing providing by {card.listProvider}
                 </Typography>
               </CardContent>
-              <CardActions
-                sx={{
-                  padding: "7px 7px",
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: "0rem",
-                }}
-              >
-                <IconButton aria-label="add to favorites" sx={{ p: 0 }}>
-                  <FavoriteIcon
-                    sx={{
-                      // fontSize: 25
-                      fontSize: {
-                        xs: "40",
-                        sm: "20",
-                        md: "25",
-                      },
-                      p: 0,
-                    }}
-                  />
+              <CardActions className="CardActions">
+                <IconButton
+                  aria-label="add to favorites"
+                  className="FavoriteIconButton"
+                >
+                  <FavoriteIcon />
                 </IconButton>
-                <IconButton aria-label="share" sx={{ p: 0, ml: 0.5 }}>
-                  <ShareIcon
-                    sx={{
-                      // fontSize: 25
-                      fontSize: {
-                        xs: "40",
-                        sm: "20",
-                        md: "25",
-                      },
-                      p: 0,
-                    }}
-                  />
+                <IconButton aria-label="share" className="ShareIconButton">
+                  <ShareIcon />
                 </IconButton>
               </CardActions>
             </Box>
           </Card>
         ))}
         <ArrowForwardIosIcon
-          sx={{
-            fontSize: 15,
-            p: 0,
-            cursor:
-              startIndex + maxCards >= cards.length ? "pointer" : "default",
-            color:
-              startIndex + maxCards >= cards.length
-                ? "grey.400"
-                : "text.primary",
-          }}
+          className={cursorForwardArrow}
           onClick={handleNext}
         ></ArrowForwardIosIcon>
       </Box>
