@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+.BoxTypographyListProperty {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-left: 44px !important;
+}
+
+.TypographyListRecommended {
+  font-weight: bold !important;
+  font-size: 1.5rem !important;
+}
+.Typography {
+  font-size: 0.8rem;
+}
+.BoxListProperty {
+  display: flex;
+  padding-top: 1px;
+  gap: 24px !important;
+  align-items: center;
+  overflow-x: auto;
+  /* TODO:  */
+}
+.cursor-default {
+  cursor: default;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-disabled {
+  cursor: default;
+  color: #bdbdbd;
+}
+.CardListProperty {
+  min-width: 330px;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+}
+.cardMediaListProperty {
+  height: 200px;
+}
+.BoxCardContent {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px;
+}
+.CardContent {
+  padding: 1px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.TypographyPrice {
+  font-size: 1.5rem !important;
+  font-weight: bold !important;
+}
+.TypographyInfo {
+  font-size: 1rem; /*default*/
+}
+.TypographyAddress {
+  font-size: 0.8rem !important;
+}
+.TypographyListInfo {
+  font-size: 0.6rem !important;
+}
+.CardActions {
+  align-items: flex-start !important;
+}
+.FavoriteIconButton {
+  padding: 0 !important;
+}
+.ShareIconButton {
+  padding: 0 !important;
+}

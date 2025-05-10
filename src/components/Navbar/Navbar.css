@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+.AppBar {
+  position: static !important;
+  box-shadow: none !important;
+  background-color: white !important;
+  /* width:100% !important; */
+  /* display: flex; */
+}
+
+.ToolBar {
+  justify-content: space-between;
+  height: 60px;
+  display: flex;
+}
+
+.TitleTypography {
+  font-weight: bold !important;
+  color: black;
+  font-size: 1.6rem !important;
+}
+
+.SignInButton {
+  color: black !important;
+  text-transform: none;
+  min-width: auto;
+}
+
+.MenuIconButton {
+  color: inherit;
+  color: black;
+}
+
+.AppBarBox {
+  display: flex;
+  gap: 16px;
+}
+.AppBarButtons {
+  color: black !important;
+  text-transform: none !important;
+  min-width: auto !important;
+  font-size: 1rem !important ;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif !important;
+}
